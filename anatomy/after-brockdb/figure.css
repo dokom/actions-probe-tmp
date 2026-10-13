@@ -1,0 +1,213 @@
+/* Layout: one reading column of text around a wide figure card; under the card, a legend, then the
+   path picker beside the selected path's hops. Tokens: page chrome on :root, the drawing's tones on
+   .iso (warmed toward the After BrockDB visual's greys), a darker set for platform-team housings
+   (data-cls="ink") and a quieter set for parts off the selected path. Light first, dark mirrored. */
+:root{
+  --ab-page:#ffffff;--ab-ink:#141112;--ab-text:#3f3739;--ab-muted:#6e6466;--ab-rule:#d9d2d3;--ab-fill:#f7f2f2;
+  --ab-red:#cc0000;--ab-red-ink:#a80000;--ab-on-red:#ffffff;
+  --ab-card:#fbf9f9;--ab-paper:#fbf9f9;--ab-face:#ffffff;--ab-top:#ffffff;
+  --ab-s0:#ddd6d6;--ab-s1:#e6e0e0;--ab-s2:#eee9e9;--ab-s3:#f5f1f1;
+  --ab-lit-top:#ffffff;--ab-lit-shade:#efeaea;
+  --ab-hi:#241f20;--ab-mid:#8c8486;--ab-lo:#b9b1b3;--ab-faint:#d9d2d3;--ab-lit:#000000;
+  --ab-halo:#8a807f;--ab-halo-o:.3;--ab-dot:#3a3436;
+  --ab-dim-hi:#a8a0a2;--ab-dim-mid:#c6bfc0;--ab-dim-lo:#dcd6d6;--ab-dim-faint:#eae5e5;
+  --ab-ink-paper:#2e2829;--ab-ink-face:#3a3435;--ab-ink-top:#4b4446;
+  --ab-ink-s0:#221d1e;--ab-ink-s1:#2a2425;--ab-ink-s2:#322c2d;--ab-ink-s3:#3b3536;
+  --ab-ink-hi:#f5f0f0;--ab-ink-mid:#aca2a4;--ab-ink-lo:#857a7c;--ab-ink-faint:#625759;--ab-ink-lit:#ffffff;
+  --ab-ink-lit-top:#665e60;--ab-ink-lit-shade:#4e4648;--ab-ink-dot:#efe8e9;
+  --ab-inkdim-paper:#c9c3c4;--ab-inkdim-face:#cfc9ca;--ab-inkdim-top:#d3cdce;
+  --ab-inkdim-s0:#bdb6b7;--ab-inkdim-s1:#c2bbbc;--ab-inkdim-s2:#c7c0c1;--ab-inkdim-s3:#ccc6c7;
+  --ab-inkdim-hi:#f3f0f0;--ab-inkdim-mid:#e6e1e2;--ab-inkdim-lo:#dcd6d7;--ab-inkdim-faint:#d4cecf;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ab-page:#0e0b0c;--ab-ink:#f3eded;--ab-text:#c9c0c1;--ab-muted:#958a8c;--ab-rule:#352a2c;--ab-fill:#1a1415;
+    --ab-red:#e23232;--ab-red-ink:#ff7070;--ab-on-red:#ffffff;
+    --ab-card:#151112;--ab-paper:#151112;--ab-face:#1d1819;--ab-top:#1e1a1b;
+    --ab-s0:#110e0f;--ab-s1:#141112;--ab-s2:#171415;--ab-s3:#1a1617;
+    --ab-lit-top:#2c2627;--ab-lit-shade:#211c1d;
+    --ab-hi:#ddd5d6;--ab-mid:#71676a;--ab-lo:#463d3f;--ab-faint:#2e2729;--ab-lit:#ffffff;
+    --ab-halo:#050404;--ab-halo-o:.9;--ab-dot:#e8e0e1;
+    --ab-dim-hi:#5a5153;--ab-dim-mid:#3c3436;--ab-dim-lo:#2c2527;--ab-dim-faint:#221c1e;
+    --ab-ink-paper:#2b2526;--ab-ink-face:#342e2f;--ab-ink-top:#3a3435;
+    --ab-ink-s0:#221d1e;--ab-ink-s1:#262122;--ab-ink-s2:#2b2526;--ab-ink-s3:#302a2b;
+    --ab-ink-hi:#f2ecec;--ab-ink-mid:#978d8f;--ab-ink-lo:#665c5e;--ab-ink-faint:#473f41;--ab-ink-lit:#ffffff;
+    --ab-ink-lit-top:#4d4647;--ab-ink-lit-shade:#3b3536;--ab-ink-dot:#efe8e9;
+    --ab-inkdim-paper:#1f1a1b;--ab-inkdim-face:#241f20;--ab-inkdim-top:#272223;
+    --ab-inkdim-s0:#1a1617;--ab-inkdim-s1:#1c1819;--ab-inkdim-s2:#1f1a1b;--ab-inkdim-s3:#221d1e;
+    --ab-inkdim-hi:#5f5658;--ab-inkdim-mid:#463e40;--ab-inkdim-lo:#383133;--ab-inkdim-faint:#2c2627;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ab-page:#0e0b0c;--ab-ink:#f3eded;--ab-text:#c9c0c1;--ab-muted:#958a8c;--ab-rule:#352a2c;--ab-fill:#1a1415;
+  --ab-red:#e23232;--ab-red-ink:#ff7070;--ab-on-red:#ffffff;
+  --ab-card:#151112;--ab-paper:#151112;--ab-face:#1d1819;--ab-top:#1e1a1b;
+  --ab-s0:#110e0f;--ab-s1:#141112;--ab-s2:#171415;--ab-s3:#1a1617;
+  --ab-lit-top:#2c2627;--ab-lit-shade:#211c1d;
+  --ab-hi:#ddd5d6;--ab-mid:#71676a;--ab-lo:#463d3f;--ab-faint:#2e2729;--ab-lit:#ffffff;
+  --ab-halo:#050404;--ab-halo-o:.9;--ab-dot:#e8e0e1;
+  --ab-dim-hi:#5a5153;--ab-dim-mid:#3c3436;--ab-dim-lo:#2c2527;--ab-dim-faint:#221c1e;
+  --ab-ink-paper:#2b2526;--ab-ink-face:#342e2f;--ab-ink-top:#3a3435;
+  --ab-ink-s0:#221d1e;--ab-ink-s1:#262122;--ab-ink-s2:#2b2526;--ab-ink-s3:#302a2b;
+  --ab-ink-hi:#f2ecec;--ab-ink-mid:#978d8f;--ab-ink-lo:#665c5e;--ab-ink-faint:#473f41;--ab-ink-lit:#ffffff;
+  --ab-ink-lit-top:#4d4647;--ab-ink-lit-shade:#3b3536;--ab-ink-dot:#efe8e9;
+  --ab-inkdim-paper:#1f1a1b;--ab-inkdim-face:#241f20;--ab-inkdim-top:#272223;
+  --ab-inkdim-s0:#1a1617;--ab-inkdim-s1:#1c1819;--ab-inkdim-s2:#1f1a1b;--ab-inkdim-s3:#221d1e;
+  --ab-inkdim-hi:#5f5658;--ab-inkdim-mid:#463e40;--ab-inkdim-lo:#383133;--ab-inkdim-faint:#2c2627;
+  color-scheme:dark;
+}
+
+/* The kit reads its own tokens; point them at ours. */
+.iso{
+  --anatomy-page:var(--ab-page);--anatomy-card:var(--ab-card);--anatomy-text:var(--ab-text);--anatomy-strong:var(--ab-ink);--anatomy-muted:var(--ab-muted);
+  --anatomy-paper:var(--ab-paper);--anatomy-face:var(--ab-face);--anatomy-top:var(--ab-top);
+  --anatomy-shade-0:var(--ab-s0);--anatomy-shade-1:var(--ab-s1);--anatomy-shade-2:var(--ab-s2);--anatomy-shade-3:var(--ab-s3);
+  --anatomy-lit-top:var(--ab-lit-top);--anatomy-lit-shade:var(--ab-lit-shade);
+  --anatomy-hi:var(--ab-hi);--anatomy-mid:var(--ab-mid);--anatomy-lo:var(--ab-lo);--anatomy-faint:var(--ab-faint);--anatomy-lit:var(--ab-lit);
+  --anatomy-halo:var(--ab-halo);--anatomy-halo-opacity:var(--ab-halo-o);--anatomy-dot:var(--ab-dot);
+  --anatomy-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+.it[data-cls="ink"]{
+  --anatomy-paper:var(--ab-ink-paper);--anatomy-face:var(--ab-ink-face);--anatomy-top:var(--ab-ink-top);
+  --anatomy-shade-0:var(--ab-ink-s0);--anatomy-shade-1:var(--ab-ink-s1);--anatomy-shade-2:var(--ab-ink-s2);--anatomy-shade-3:var(--ab-ink-s3);
+  --anatomy-hi:var(--ab-ink-hi);--anatomy-mid:var(--ab-ink-mid);--anatomy-lo:var(--ab-ink-lo);--anatomy-faint:var(--ab-ink-faint);--anatomy-lit:var(--ab-ink-lit);
+  --anatomy-lit-top:var(--ab-ink-lit-top);--anatomy-lit-shade:var(--ab-ink-lit-shade);--anatomy-dot:var(--ab-ink-dot);
+}
+/* Parts off the selected path step down a tone. */
+.ab-items[data-focus] .it:not([data-on]){
+  --anatomy-hi:var(--ab-dim-hi);--anatomy-mid:var(--ab-dim-mid);--anatomy-lo:var(--ab-dim-lo);--anatomy-faint:var(--ab-dim-faint);--anatomy-dot:var(--ab-dim-mid);
+}
+.ab-items[data-focus] .it[data-cls="ink"]:not([data-on]){
+  --anatomy-paper:var(--ab-inkdim-paper);--anatomy-face:var(--ab-inkdim-face);--anatomy-top:var(--ab-inkdim-top);
+  --anatomy-shade-0:var(--ab-inkdim-s0);--anatomy-shade-1:var(--ab-inkdim-s1);--anatomy-shade-2:var(--ab-inkdim-s2);--anatomy-shade-3:var(--ab-inkdim-s3);
+  --anatomy-hi:var(--ab-inkdim-hi);--anatomy-mid:var(--ab-inkdim-mid);--anatomy-lo:var(--ab-inkdim-lo);--anatomy-faint:var(--ab-inkdim-faint);--anatomy-dot:var(--ab-inkdim-hi);
+}
+/* The station a hop reaches is the one lit accent, with the carrier on its way there. */
+.it[data-hot]>.iso-solid>.iso-edge,.it[data-hot] .iso-solid>.iso-edge{stroke:var(--anatomy-lit)}
+.it[data-hot] .iso-solid>.iso-top{fill:var(--anatomy-lit-top)}
+.it[data-hot] .iso-solid>.iso-shade{fill:var(--anatomy-lit-shade)}
+.it[data-lamp-on] .iso-solid>.iso-top,.it[data-lamp-on] .iso-solid>.iso-shade{fill:var(--anatomy-lit);stroke:var(--anatomy-lit)}
+.it[data-lamp-on] .iso-solid>.iso-edge{stroke:var(--anatomy-lit)}
+/* Marks a hop lights: knobs, drawers, frames, slots, tags, the version window. */
+[data-mark][data-lit] .iso-solid>.iso-edge,[data-mark][data-lit]>.iso-solid>.iso-edge{stroke:var(--anatomy-lit)}
+[data-mark][data-lit] .iso-solid>.iso-top{fill:var(--anatomy-lit-top)}
+[data-mark][data-lit] .iso-line{stroke:var(--anatomy-lit)}
+[data-mark][data-lit] .iso-dots circle{fill:var(--anatomy-lit);opacity:1}
+.exp-card{fill:var(--anatomy-shade-1);stroke:var(--anatomy-lo);stroke-width:.5px;vector-effect:non-scaling-stroke}
+.exp-card[data-lit]{fill:var(--anatomy-lit);stroke:var(--anatomy-lit)}
+.d2-tag,.t16-tag{fill:var(--anatomy-top);stroke:var(--anatomy-mid);stroke-width:.5px;vector-effect:non-scaling-stroke}
+.d2-tag[data-lit],[data-lit]>.t16-tag,.t16-tag[data-lit]{fill:var(--anatomy-lit);stroke:var(--anatomy-lit)}
+[data-mark="owners"][data-lit]{fill:var(--anatomy-lit)}
+.pbi-sheet{fill:var(--anatomy-top);stroke:var(--anatomy-lo);stroke-width:.5px;vector-effect:non-scaling-stroke}
+.d1-window{fill:var(--anatomy-shade-0);stroke:var(--anatomy-lo);stroke-width:.5px;vector-effect:non-scaling-stroke}
+.d1-digits .iso-face-text{fill:var(--anatomy-hi)}
+[data-mark="version"][data-lit] .iso-face-text{fill:var(--anatomy-lit)}
+[data-mark="version"][data-lit] .pbi-sheet{fill:var(--anatomy-top);stroke:var(--anatomy-lo);stroke-width:.5px;vector-effect:non-scaling-stroke}
+.d1-window{stroke:var(--anatomy-lit)}
+.w-lamp{fill:var(--anatomy-shade-0);stroke:var(--anatomy-lo);stroke-width:.5px;vector-effect:non-scaling-stroke;transition:fill .4s var(--anatomy-ease)}
+.w-lamp[data-ran]{fill:var(--anatomy-hi);stroke:var(--anatomy-hi)}
+.w-lamp[data-lit]{fill:var(--anatomy-lit);stroke:var(--anatomy-lit)}
+.iso-line[data-row][data-printed]{stroke:var(--anatomy-mid)}
+.iso-line[data-row][data-lit]{stroke:var(--anatomy-lit)}
+[data-mark="hold"][data-lit] circle{fill:var(--anatomy-lit);opacity:1}
+[data-mark="seal"][data-lit] circle{fill:var(--anatomy-lit);opacity:1}
+.ar-toggle[data-lit]{stroke:var(--anatomy-lit)}
+/* The carrier: a capsule inside the tube, drawn in the drawing's own units. */
+.carrier path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:none}
+.carrier .cr-edge{stroke:var(--anatomy-paper)}
+.carrier .cr-body{stroke:var(--anatomy-lit)}
+.carrier[hidden]{display:none}
+
+/* ---- page ------------------------------------------------------------------------------- */
+*{box-sizing:border-box}
+body{margin:0;background:var(--ab-page);color:var(--ab-text)}
+.ab-page{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,3vw,32px);padding-block:36px 72px;font:15.5px/1.6 "IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;background:var(--ab-page);color:var(--ab-text);-webkit-font-smoothing:antialiased}
+.ab-eyebrow,.ab-kicker{margin:0;font:500 12px/1.4 "IBM Plex Mono",ui-monospace,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ab-muted)}
+.ab-head{display:grid;gap:12px;max-width:74ch}
+.ab-head h1{margin:0;font:700 clamp(38px,6vw,64px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;letter-spacing:.005em;text-transform:uppercase;color:var(--ab-ink);text-wrap:balance}
+.ab-head h1 span{display:block}
+.ab-head h1 b{color:var(--ab-red);font-weight:700}
+.ab-head h1 .ab-h1-b{font-size:.56em;line-height:1.05;margin-top:.12em;color:var(--ab-text)}
+.ab-lede{margin:0;font-size:17px;color:var(--ab-text)}
+.ab-lede-2{color:var(--ab-muted);font-size:15.5px}
+.ab-figwrap{margin-top:8px}
+.ab-figwrap .iso-figure{margin:24px 0 0}
+.ab-figwrap .iso-plate{padding:46px 18px 44px}
+.ab-stage{position:relative;overflow-x:auto;touch-action:pan-x pan-y;scrollbar-width:thin}
+.ab-stage:focus{outline:none}
+.ab-stage:focus-visible{outline:1px solid var(--anatomy-muted);outline-offset:6px}
+.ab-stage svg{min-width:600px}
+.ab-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.ab-stage .it[data-st]{cursor:default}
+
+.ab-legend{display:grid;gap:12px;margin-top:14px;font-size:13.5px;color:var(--ab-muted)}
+.ab-finishes{display:flex;flex-wrap:wrap;gap:6px 22px}
+.ab-key{display:inline-flex;align-items:center;gap:8px}
+.ab-sw{display:inline-block;width:18px;height:12px;flex:none;border:1px solid var(--ab-mid)}
+.ab-sw-ink{background:var(--ab-ink-paper);border-color:var(--ab-ink-paper)}
+.ab-sw-paper{background:var(--ab-face);border-color:var(--ab-mid)}
+.ab-sw-rivet{background:radial-gradient(circle,var(--ab-mid) 0 1px,transparent 1.4px) 0 0/5px 5px;border-color:var(--ab-lo)}
+.ab-sw-box{border-color:var(--ab-mid)}
+.ab-sw-lit{background:var(--ab-lit);border-color:var(--ab-lit);border-radius:6px;height:8px}
+.ab-parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 24px;margin:0}
+.ab-parts div{display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--ab-rule);padding-top:5px}
+.ab-parts dt{color:var(--ab-muted)}
+.ab-parts dd{margin:0;color:var(--ab-ink);font-weight:500}
+
+.ab-panel{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;margin-top:36px;border-top:2px solid var(--ab-ink);padding-top:20px}
+.ab-paths{display:grid;gap:6px;align-content:start}
+.ab-path{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 12px;text-align:left;font:inherit;color:var(--ab-text);background:transparent;border:1px solid var(--ab-rule);padding:9px 12px;cursor:pointer;min-height:44px}
+.ab-path:hover{border-color:var(--ab-mid)}
+.ab-path:focus-visible{outline:2px solid var(--ab-red);outline-offset:2px}
+.ab-path[aria-pressed="true"]{border-color:var(--ab-ink);background:var(--ab-fill)}
+.ab-path-n{grid-row:span 2;font:700 26px/1 "Barlow Condensed","Arial Narrow",sans-serif;color:var(--ab-red-ink);padding-top:2px;font-variant-numeric:tabular-nums}
+.ab-path-t{font-weight:600;color:var(--ab-ink);line-height:1.3}
+.ab-path-s{font-size:13px;color:var(--ab-muted);line-height:1.35}
+.ab-detail{min-width:0;display:grid;gap:10px;align-content:start}
+.ab-detail h2{margin:0;font:700 clamp(28px,3.4vw,38px)/1 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--ab-ink);text-wrap:balance}
+.ab-sub{margin:0;color:var(--ab-muted)}
+.ab-hops{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:2px;counter-reset:hop}
+.ab-hops button{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:4px 12px;width:100%;text-align:left;font:inherit;color:var(--ab-text);background:transparent;border:0;border-left:3px solid transparent;padding:7px 10px;cursor:pointer;min-height:44px}
+.ab-hops button:hover{background:var(--ab-fill)}
+.ab-hops button:focus-visible{outline:2px solid var(--ab-red);outline-offset:-2px}
+.ab-hops li[aria-current="step"] button{border-left-color:var(--ab-red);background:var(--ab-fill);color:var(--ab-ink)}
+.ab-hop-n{font:500 12px/1.9 "IBM Plex Mono",ui-monospace,monospace;color:var(--ab-muted);font-variant-numeric:tabular-nums}
+.ab-hop-t{min-width:0}
+.ab-hops button .ab-chip{margin-left:2px}
+.ab-chip{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ab-red);color:var(--ab-on-red);font:600 12px/1 "IBM Plex Sans",sans-serif;font-variant-numeric:tabular-nums;flex:none}
+.ab-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 24px;margin:8px 0 0}
+.ab-who div{border-top:1px solid var(--ab-rule);padding-top:6px}
+.ab-who dt{font:500 11.5px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ab-muted)}
+.ab-who dd{margin:2px 0 0;color:var(--ab-ink)}
+.ab-principles{display:grid;gap:6px;margin-top:4px}
+.ab-pr{display:block;font-size:14.5px}
+.ab-pr .ab-chip{margin-right:8px;vertical-align:-4px}
+.ab-pr b{color:var(--ab-ink);font-weight:600}
+.ab-pr-none{color:var(--ab-muted);font-style:italic}
+.ab-note{margin:4px 0 0;padding:9px 12px;border-left:3px solid var(--ab-mid);background:var(--ab-fill);font-size:14.5px}
+
+.ab-sec{margin-top:44px;border-top:2px solid var(--ab-ink);padding-top:16px}
+.ab-sec h2{margin:0 0 14px;font:700 clamp(26px,3.2vw,34px)/1 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;color:var(--ab-ink)}
+.ab-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 28px}
+.ab-role h3{margin:0 0 4px;font:600 15px/1.3 "IBM Plex Sans",sans-serif;color:var(--ab-ink)}
+.ab-role p{margin:0;font-size:14.5px}
+.ab-role em{display:block;margin-top:6px;font-style:normal;color:var(--ab-ink);font-weight:500}
+.ab-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 28px}
+.ab-col h3{margin:0 0 6px;font:500 12px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ab-muted)}
+.ab-col ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.ab-col li::marker{color:var(--ab-mid)}
+.ab-col-after li::marker{color:var(--ab-red)}
+.ab-col-after li{color:var(--ab-ink)}
+.ab-ending{margin:16px 0 0;max-width:74ch;font-size:16px;color:var(--ab-ink)}
+.ab-plist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px 28px}
+.ab-plist li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px;font-size:14.5px}
+.ab-plist li .ab-chip{grid-row:span 2;margin-top:1px}
+.ab-plist b{color:var(--ab-ink);font-weight:600}
+.ab-foot{margin-top:40px;padding-top:12px;border-top:1px solid var(--ab-rule);font:400 12px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:var(--ab-muted)}
+@media (max-width:860px){
+  .ab-panel{grid-template-columns:minmax(0,1fr)}
+  .ab-paths{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+}
+@media (prefers-reduced-motion:reduce){.w-lamp{transition:none}}
